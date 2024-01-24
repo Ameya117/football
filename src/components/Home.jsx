@@ -4,11 +4,12 @@ import Matches from '../components/Matches'
 
 
 const Home = (props) => {
-  let {league} = props;
+  let {league,leaguelogo} = props;
   return (
     <div className="flex"> 
-      <Leagues league={league}/>
-      <Matches league={league} />
+      <Leagues/>
+      {/* <LeagueStandings league={league} leaguelogo={leaguelogo} key={league}></LeagueStandings> */}
+      <Matches league={league} leaguelogo={leaguelogo} key={league} />
       
     </div>
   )
