@@ -30,8 +30,8 @@ function App() {
         <Routes>
 
           
-          {/* <Route exact path="/" element={<LandingPage/>}></Route> */}
-          <Route exact path="/" element={<Home key="landingpage" league="PL" leaguelogo={PL}/>}></Route>
+          <Route exact path="/" element={<LandingPage/>}></Route>
+          {/* <Route exact path="/" element={<Home key="landingpage" league="PL" leaguelogo={PL}/>}></Route> */}
           <Route exact path="/home" element={<Home key="home" league="PL" leaguelogo={PL}/>}></Route>
           <Route exact path="/CL/matches" element={<Home key="CL" league="CL" leaguelogo={climg}/>}></Route>
           <Route exact path="/PL/matches" element={<Home key="PL" league="PL" leaguelogo={PL}/>}></Route>

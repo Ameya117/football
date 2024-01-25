@@ -12,8 +12,6 @@ const Matches = (props) => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiURL = import.meta.env.VITE_API_URL;
   const [matches, setMatches] = useState(null);
-  const [currentLeague, setCurrentLeague] = useState(" ");
-  const [leagueCode, setLeagueCode] = useState("PL");
   const [matchRange, setMatchRange] = useState({ start: 0, end: 10 })
   const [progress, setProgress] = useState(0);
   const [leagueID, setLeagueID] = useState(2002);
@@ -22,7 +20,7 @@ const Matches = (props) => {
   const getMatches = async (league) => {
     try {
       setProgress(progress + 25);
-      let response = await axios.get(`${apiURL}/competitions/${league}/matches`, {
+      const response = await axios.get(`${apiURL}/competitions/${league}/matches`, {
         headers: {
           'X-Auth-Token': apiKey
         }
@@ -31,8 +29,6 @@ const Matches = (props) => {
       const data = response.data;
       setMatches(data.matches.slice(matchRange.start, matchRange.end));
       setProgress(progress + 75);
-      setCurrentLeague(data.competition.name);
-      setLeagueCode(data.competition.code)
       setLeagueID(data.competition.id)
       setProgress(100);
 
@@ -46,27 +42,12 @@ const Matches = (props) => {
     // eslint-disable-next-line
   }, [])
 
-  // const handleOnClick = async (e) => {//DELTE LATER - REPLACED BY useEffect()
-  //   // e.preventDefault();
-  //   // console.log(league);
-  //   console.log(currentLeague)
-  //   getMatches(league);
-  // }
-
-  const handleCheckMatches = async (e) => {//DELETE LATER
-    // e.preventDefault();
-    console.log(matches);
-  }
-
   const handleNext = (e) => {
     e.preventDefault();
-    console.log("next")
-
     setMatchRange({ start: matchRange.start + 10, end: matchRange.end + 10 });
     getMatches(league);
   }
   const handlePrev = () => {
-    console.log("prev");
     setMatchRange({ start: matchRange.start - 10, end: matchRange.end - 10 });
     getMatches(league);
   }
@@ -81,7 +62,7 @@ const Matches = (props) => {
       <br />
 
       {matches ? 
-        <div className="bg-yellow-100 m-5 w-auto py-5">
+        <div className="-blue-800 m-5 w-auto py-5">
           {matches.map((match) => {
             return <div className="mx-4  hover:m-3" key={match.id}>
 
@@ -97,9 +78,10 @@ const Matches = (props) => {
           </div>
         </div>
 
-     : <h1>SELECT LEAGUE -OR- {<Spinner />}
-      {/* <button type="button" className='border-4 h-20' onClick={handleOnClick}>LOAD MATCHES</button> */}
-      </h1>}
+     : <div className='m-auto'>
+      {<Spinner />}
+      
+      </div>}
     </>
   )
 }

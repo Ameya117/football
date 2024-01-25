@@ -15,8 +15,7 @@ const Navbar = () => {
                     <div className="flex justify-between items-center">
 
                         <span className="flex items-center justify-center h-16 cursor-pointer">
-                            <Link className='mx-4 text-2xl' to="/">OneFootball</Link>
-
+                            <Link className='mx-4 text-2xl' to="/">FTBL</Link>
                         </span>
                         <span className="text-3xl mx-2 cursor-pointer md:hidden ">
                             <ion-icon name={icon} onClick={handleMenu}></ion-icon>
@@ -27,14 +26,14 @@ const Navbar = () => {
                         <ul className='md:flex md:items-center  md:z-auto md:static absolute bg-red-100 w-full left-0  md:w-auto md:py-0 py-4 md:pl-0 pl-7 md:opacity-100 opacity-9 top-[-400px] transition-all ease-in duration-500 '>
 
                             <li className="mx-4 my-6 md:my-0">
-                                <Link to="/home" className="group text-black-600 transition duration-300">
+                                <Link to="/home" className="group text-lg text-black-600 transition duration-300">
                                     Home
                                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-slate-950"></span>
                                 </Link>
                             </li>
                             <li className="mx-4 my-6 md:my-0">
 
-                                <Link to="/about" className="group d q text-dark-600 transition duration-300">
+                                <Link to="/about" className="group text-lg d q text-dark-600 transition duration-300">
                                     About
                                     <span className="block max-w-0 group-hover:max-w-full transition-all duration-500 h-0.5 bg-slate-950"></span>
                                 </Link>

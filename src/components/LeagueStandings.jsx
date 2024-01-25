@@ -13,7 +13,6 @@ const LeagueStandings = (props) => {
   const [progress, setProgress] = useState(0);
   const [teams, setTeams] = useState(null);
  
-
   const getTeams = async () => {
     try {
       setProgress(progress + 25);
