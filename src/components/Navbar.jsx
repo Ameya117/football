@@ -42,14 +42,8 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <div>
-
                         <button className="bg-red-400 px-6 py-2 mx-4 hover:bg-red-500 rounded-2xl hidden md:block" type="button"><i className="fa-solid fa-circle-half-stroke "></i></button>
                     </div>
-
-
-
-
-
                 </nav>
             </div>
         </>

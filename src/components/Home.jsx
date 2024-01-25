@@ -1,4 +1,4 @@
-import React, { useEffect,useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Leagues from '../components/Leagues'
 import Matches from '../components/Matches'
 import { Link, useLocation } from "react-router-dom";
@@ -12,8 +12,9 @@ const Home = (props) => {
   const apiKey = import.meta.env.VITE_API_KEY;
   const apiURL = import.meta.env.VITE_API_URL;
   const [leagueID, setLeagueID] = useState();
+  const [currentLeague, setCurrentLeague] = useState(" ");
 
-  const getLeagueId = async (lg)=>{
+  const getLeagueId = async (lg) => {
     try {
       let response = await axios.get(`${apiURL}/competitions/${league}`, {
         headers: {
@@ -22,13 +23,14 @@ const Home = (props) => {
       });
       const data = response.data;
       setLeagueID(data.id);
-     
+      setCurrentLeague(data.name);
+
     } catch (error) {
       console.error(error);
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getLeagueId(league);
     //es
   })
@@ -45,10 +47,40 @@ const Home = (props) => {
 
   return (
     <>
-      <div className="flex" key={league}>
-        <Leagues />
-        
-        {element}
+      <div className="flex flex-row">
+        <div className='w-1/6 md:2/6 mt-36 md:mt-48'>
+          <Leagues />
+        </div>
+        <div className="flex flex-col w-5/6 md:4/6">
+
+          <div className='h-22 px-12 py-4 rounded-lg mb-2 mx-2 flex flex-col sm:flex-row'>
+            <div className='grid place-content-center'>
+              <img className="grid place-content-center h-16 sm:h-28 md:h-36" src={leaguelogo} alt={`${league} logo`} />
+            </div>
+            <div className="my-auto  grid place-content-center  ">
+              <h1 className="my-auto ml-0 sm:ml-2 text-2xl sm:text-3xl md:text-5xl">
+                {currentLeague}
+              </h1>
+            </div>
+          </div>
+          <div>
+            <ul className="flex border-b justify-around">
+              <li className="mb-px mr-1">
+                <Link className={`inline-block  rounded-t py-2 px-4 font-bold ${location.pathname === `/${league}/matches` ? 'border-b-4 pointer-events-none' : ''}`} to={`/${league}/matches`}>Fixtures</Link>
+              </li>
+              <li className="mr-1">
+                <Link className={`inline-block py-2 px-4 font-bold ${location.pathname === `/${league}/table/${leagueID}` ? 'border-b-4 pointer-events-none' : ''}`} to={`/${league}/table/${leagueID}`} disabled>Table</Link>
+              </li>
+
+            </ul>
+
+          </div>
+
+          <div className="element">
+            {element}
+          </div>
+
+        </div>
       </div>
     </>
   )

@@ -80,37 +80,10 @@ const Matches = (props) => {
       />
       <br />
 
-      {matches ? <div className='sm:w-2/3 '>
-
-        {/* <button type="button" className='border-4' onClick={handleCheckMatches}>Check matches array</button> */}
-        <div className="league-name mt-10 grid place-content-center p-8">
-          <div className='h-22 px-12 py-4 rounded-lg mb-2 mx-2 flex flex-col md:flex-row'>
-
-            <div>
-              <img className="h-28" src={leaguelogo} alt={`${league} logo`} />
-            </div>
-            <div className="my-auto mr-auto text-wrap grid  place-content-center">
-              <h1 className="my-auto text-xl ">
-                {currentLeague}
-              </h1>
-            </div>
-          </div>
-
-          <div>
-            <ul className="flex border-b justify-around">
-              <li className="-mb-px mr-1">
-                <Link className={`inline-block hover:border-b-4 rounded-t py-2 px-4 font-semibold ${location.pathname === `${league}/matches` ? 'border-b-2 pointer-events-none' : ''}`} to={`/${league}/matches`}>Fixtures</Link>
-              </li>
-              <li className="mr-1">
-                <Link className={`inline-block py-2 px-4 font-semibold ${location.pathname === `/${leagueCode}/table/${leagueID}` ? 'border-b-2 pointer-events-none' : ''}`} to={`/${leagueCode}/table/${leagueID}`} disabled>Table</Link>
-              </li>
-              
-            </ul>
-          </div>
-        </div>
+      {matches ? 
         <div className="bg-yellow-100 m-5 w-auto py-5">
           {matches.map((match) => {
-            return <div className="mx-5  hover:m-3" key={match.id}>
+            return <div className="mx-4  hover:m-3" key={match.id}>
 
               <Link to={`/matchinfo/${match.id}`} >
                 <MatchScore match={match}></MatchScore>
@@ -124,7 +97,7 @@ const Matches = (props) => {
           </div>
         </div>
 
-      </div> : <h1>SELECT LEAGUE -OR- {<Spinner />}
+     : <h1>SELECT LEAGUE -OR- {<Spinner />}
       {/* <button type="button" className='border-4 h-20' onClick={handleOnClick}>LOAD MATCHES</button> */}
       </h1>}
     </>

@@ -2,8 +2,9 @@ import './App.css'
 import Navbar from './components/Navbar'
 import Home from './components/Home';
 import About from './components/About';
-import  LandingPage from './components/LandingPage';
-import  MatchInfo from './components/MatchInfo';
+import LandingPage from './components/LandingPage';
+import TeamInfo from './components/TeamInfo';
+import MatchInfo from './components/MatchInfo';
 import climg from './components/cl.avif';
 import bundesliga from './components/bundesliga.avif';
 import PL from './components/premierleague.avif';
@@ -45,8 +46,9 @@ function App() {
           <Route exact path="/about" element={<About/>}></Route>
  
           <Route exact path="/matchinfo/:id" element={<MatchInfo />}></Route>
+          <Route exact path="/matches/:id" element={<TeamInfo />}></Route>
 
-          {/* <Route exact path="/home" element={<Home key="home" league="PL" leaguelogo={PL}/>}></Route> */}
+          
           <Route exact path="/CL/table/:id" element={<Home key="CL" league="CL" leaguelogo={climg}/>}></Route>
           <Route exact path="/PL/table/:id" element={<Home key="PL" league="PL" leaguelogo={PL}/>}></Route>
           <Route exact path="/BL1/table/:id" element={<Home key="BL1" league="BL1" leaguelogo={bundesliga}/>}></Route>

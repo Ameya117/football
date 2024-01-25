@@ -1,10 +1,7 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useParams, Link, useLocation } from 'react-router-dom'
 import axios from 'axios';
 
-
-
-//http://api.football-data.org/v4/competitions/PL/standings
 const LeagueStandings = (props) => {
   let { league, leaguelogo } = props;
   let location = useLocation();
@@ -15,9 +12,7 @@ const LeagueStandings = (props) => {
 
   const [progress, setProgress] = useState(0);
   const [teams, setTeams] = useState(null);
-  const [currentLeague, setCurrentLeague] = useState("");//??
-  const [leagueID, setLeagueID] = useState(2002);
-  const [leagueCode, setLeagueCode] = useState("PL");
+ 
 
   const getTeams = async () => {
     try {
@@ -29,11 +24,8 @@ const LeagueStandings = (props) => {
       });
       setProgress(progress + 50);
       const data = response.data;
-      setLeagueID(data.competition.id);
       setProgress(progress + 75);
-      setCurrentLeague(data.competition.name);
       setTeams(data.standings[0].table);
-      setLeagueCode(data.competition.id)
       setProgress(100);
 
     } catch (error) {
@@ -41,63 +33,66 @@ const LeagueStandings = (props) => {
     }
   }
 
-
-  const handleClick = () => {
+  useEffect(()=>{
     getTeams();
-    console.log(teams);
+    //eslint-disable-next-line
+  },[])
 
-  }
-
+  
   return (
     <>
-      <div>
-        
-        <div className="league-name mt-10 grid place-content-center p-8">
-          <div className='h-22 px-12 py-4 rounded-lg mb-2 mx-2 flex flex-col md:flex-row'>
-
-            <div>
-              <img className="h-28" src={leaguelogo} alt={`${league} logo`} />
-            </div>
-            <div className="my-auto mr-auto text-wrap grid  place-content-center">
-              <h1 className="my-auto text-xl ">
-                {currentLeague}
-              </h1>
-            </div>
-          </div>
-            <div>
-              <ul className="flex border-b justify-around">
-                <li className="-mb-px mr-1">
-                  <Link className={`inline-block hover:border-b-4 rounded-t py-2 px-4 font-semibold ${location.pathname === '/matches' ? 'border-b-2' : ''}`} to={`/${league}/matches`}>Fixtures</Link>
-                </li>
-                <li className="mr-1">
-                  <Link className={`inline-block py-2 px-4 font-semibold ${location.pathname === `/${league}/table/${leagueID}` ? 'border-b-2' : ''}`} to={`/${leagueCode}/table/${leagueID}`}>Table</Link>
-                </li>
-
-              </ul>
-            </div>
-            <div className='standings-table bg-yellow-100 w-'>
-              {teams && teams.map((element) => { //add link for team info??
-                return <div className="flex flex-row justify-between my-1  bg-blue-200" key={element.team.id}>
-                  <div className='flex my-4 mx-2'>
-                    {element.position}
-                    <img className="h-16" src={element.team.crest} alt="" />
-                    {element.team.name}
-                  </div>
-                  <div>
-                    SCORE
-                  </div>
-
-                </div>
-              })}
-
-            </div>
-
-          </div>
-        <button type="button" className='bg-red-100' onClick={handleClick}> ARRAY OF TEAMS</button>
+      <div className='mx-2 bg-yellow-300 p-3 flex flex-col'>
+        <div className='flex justify-end'>
+        <h2 className="mx-2">PLD</h2>
+            <h2 className="mx-2">W</h2>
+            <h2 className="mx-2 hidden md:block">D</h2> 
+            <h2 className="mx-2 hidden md:block">L</h2> 
+            <h2 className="mx-2">PTS</h2>
         </div>
-      
+
+        <div>
+
+          {teams && teams.map((element) => {
+            return <div className="flex flex-row justify-between my-1 bg-blue-200" key={element.team.id}>
+              <Link to={`/match/${element.team.id}`}>
+
+              <div className='flex my-4 mx-2'>
+                <h2 className='grid place-content-center font-bold'> {element.position}</h2>
+                <img className="h-8 md:12 mx-2 grid place-content-center" src={element.team.crest} alt={`${element.team.shortName} logo`} />
+                <div className='grid place-content-center'>
+
+                  <h2 className='hidden sm:block font-bold text-sm md:text-md lg:text-lg'>{element.team.name}</h2>
+                  <h2 className='block sm:hidden font-bold'>{element.team.shortName}</h2>
+                </div>
+              </div>
+              </Link>
+              
+              <div className='flex flex-row justify-around mr-2'>
+
+                <h2 className="mr-3 md:mr-2 lg:mr-4 xl:mr-4 grid place-content-center">
+                  {element.playedGames}
+                </h2>
+                <h2 className="mr-3 md:mr-4 lg:mr-4 xl:mr-4 grid place-content-center">
+                  {element.won}
+                </h2>
+                <h2 className="hidden  md:block md:my-auto  md:mr-4 lg:mr-4 xl:mr-4">
+                  {element.draw}
+                </h2>
+                <h2 className=" hidden md:block md:my-auto md:mr-4 lg:mr-4 xl:mr-4">
+                  {element.lost}
+                </h2>
+                <h2 className="mr-2 grid place-content-center">
+                  {element.points}
+                </h2>
+              </div>
+            </div>
+          })}
+
+        </div>
+      </div>
     </>
   )
 }
 
 export default LeagueStandings
+
