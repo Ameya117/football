@@ -19,7 +19,9 @@ import {
   Routes,
   Route
 } from "react-router-dom";
-
+// individual match info
+// team matches
+// modify loader
 
 function App() {
 

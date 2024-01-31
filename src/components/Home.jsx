@@ -71,10 +71,10 @@ const Home = (props) => {
           <div>
             <ul className="flex border-b justify-around text-white">
               <li className="mb-px mr-1">
-                <Link className={`inline-block  rounded-t py-2 px-4 font-bold ${location.pathname === `/${league}/matches` ? 'border-b-4 pointer-events-none' : ''}`} to={`/${league}/matches`}>Fixtures</Link>
+                <Link className={`inline-block md:text-lg lg:text-xl rounded-t py-2 px-4 font-bold ${location.pathname === `/${league}/matches` ? 'border-b-4 pointer-events-none' : ''}`} to={`/${league}/matches`}>Fixtures</Link>
               </li>
               <li className="mr-1">
-                <Link className={`inline-block py-2 px-4 font-bold ${location.pathname === `/${league}/table/${leagueID}` ? 'border-b-4 pointer-events-none' : ''}`} to={`/${league}/table/${leagueID}`} disabled>Table</Link>
+                <Link className={`inline-block md:text-lg lg:text-xl py-2 px-4 font-bold ${location.pathname === `/${league}/table/${leagueID}` ? 'border-b-4 pointer-events-none' : ''}`} to={`/${league}/table/${leagueID}`} disabled>Table</Link>
               </li>
 
             </ul>

@@ -12,7 +12,7 @@ const LeagueStandings = (props) => {
 
   const [progress, setProgress] = useState(0);
   const [teams, setTeams] = useState(null);
- 
+
   const getTeams = async () => {
     try {
       setProgress(progress + 25);
@@ -32,41 +32,41 @@ const LeagueStandings = (props) => {
     }
   }
 
-  useEffect(()=>{
+  useEffect(() => {
     getTeams();
     //eslint-disable-next-line
-  },[])
+  }, [])
 
-  
+
   return (
     <>
-      <div className='mx-2 bg-yellow-300 p-3 flex flex-col'>
+      <div className='mx-2 rounded-lg p-3 flex flex-col'>
         <div className='flex justify-end'>
-        <h2 className="mx-2">PLD</h2>
-            <h2 className="mx-2">W</h2>
-            <h2 className="mx-2 hidden md:block">D</h2> 
-            <h2 className="mx-2 hidden md:block">L</h2> 
-            <h2 className="mx-2">PTS</h2>
+          <h2 className="mx-2 text-white font-semibold">PLD</h2>
+          <h2 className="mx-2 text-white font-semibold">W</h2>
+          <h2 className="mx-2 text-white font-semibold hidden md:block">D</h2>
+          <h2 className="mx-2 text-white font-semibold hidden md:block">L</h2>
+          <h2 className="mx-2 text-white font-semibold">PTS</h2>
         </div>
 
         <div>
 
           {teams && teams.map((element) => {
-            return <div className="flex flex-row justify-between my-1 bg-blue-200" key={element.team.id}>
+            return <div className="flex flex-row justify-between my-2 bg-slate-500 opacity-75 rounded-lg lg:h-24 items-center" key={element.team.id}>
               <Link to={`/match/${element.team.id}`}>
 
-              <div className='flex my-4 mx-2'>
-                <h2 className='grid place-content-center font-bold'> {element.position}</h2>
-                <img className="h-8 md:12 mx-2 grid place-content-center" src={element.team.crest} alt={`${element.team.shortName} logo`} />
-                <div className='grid place-content-center'>
+                <div className='flex my-4 mx-2'>
+                  <h2 className='grid place-content-center font-semisbold lg:text-2xl'> {element.position}</h2>
+                  <img className="h-8 md:12 mx-2 grid place-content-center md:h-10 lg:h-14" src={element.team.crest} alt={`${element.team.shortName} logo`} />
+                  <div className='grid place-content-center'>
 
-                  <h2 className='hidden sm:block font-bold text-sm md:text-md lg:text-lg'>{element.team.name}</h2>
-                  <h2 className='block sm:hidden font-bold'>{element.team.shortName}</h2>
+                    <h2 className='hidden sm:block font-bold text-sm md:text-md lg:text-3xl'>{element.team.name}</h2>
+                    <h2 className='block sm:hidden font-bold'>{element.team.shortName}</h2>
+                  </div>
                 </div>
-              </div>
               </Link>
-              
-              <div className='flex flex-row justify-around mr-2'>
+
+              <div className='flex flex-row justify-around mr-2 font-bold lg:text-lg'>
 
                 <h2 className="mr-3 md:mr-2 lg:mr-4 xl:mr-4 grid place-content-center">
                   {element.playedGames}

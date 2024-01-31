@@ -11,21 +11,21 @@ const MatchScore = (props) => {
                     <div className="home-team flex justify-between my-1 mx-auto place-content-center w-1/2">
                         <div className='flex flex-col md:flex-row'>
                             <img className='sm:mr-2 h-16 ' src={match.homeTeam.crest} alt={match.homeTeam.shortName} />
-                            <h1 className="hidden sm:block">{match.homeTeam.name}</h1>
+                            <h1 className="hidden sm:block text-lg lg:text-2xl ">{match.homeTeam.name}</h1>
                             <h1 className="sm:hidden">{match.homeTeam.shortName}</h1>
                         </div>
                         <div className='my-1'>
-                            <h1 className=' ml-2 md:ml-12'> {match.score.fullTime.home}</h1>
+                            <h1 className=' ml-2 md:ml-12 text-lg lg:text-2xl'> {match.score.fullTime.home}</h1>
                         </div>
                     </div>
                     <div className='home-team flex justify-between my-1 mx-auto place-content-center w-1/2'>
                         <div className="flex flex-col md:flex-row">
                             <img className='sm:mr-2 h-16' src={match.awayTeam.crest} alt={match.awayTeam.shortName} />
-                            <h1 className="hidden sm:block ">{match.awayTeam.name}</h1>
+                            <h1 className="hidden sm:block text-lg lg:text-2xl ">{match.awayTeam.name}</h1>
                             <h1 className="sm:hidden">{match.awayTeam.shortName}</h1>
                         </div>
                         <div className="my-1 ">
-                            <h1 className='ml-2 md:ml-12 '>{match.score.fullTime.away}</h1>
+                            <h1 className='ml-2 md:ml-12  text-lg lg:text-2xl'>{match.score.fullTime.away}</h1>
                         </div>
                     </div>
                 </div>
@@ -33,6 +33,7 @@ const MatchScore = (props) => {
                 <div className='my-auto w-1/3'>
                     <div className='flex place-content-center'>
                         <h2>DATE: <br />{date}</h2>
+                        {/* edit date to readable format */}
                     </div>
 
                 </div>
