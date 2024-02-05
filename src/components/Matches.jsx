@@ -16,7 +16,6 @@ const Matches = (props) => {
   const [progress, setProgress] = useState(0);
   const [leagueID, setLeagueID] = useState(2002);
 
-
   const getMatches = async (league) => {
     try {
       setProgress(progress + 25);
@@ -43,7 +42,7 @@ const Matches = (props) => {
   }, [])
 
   const handleNext = (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     setMatchRange({ start: matchRange.start + 10, end: matchRange.end + 10 });
     getMatches(league);
   }
@@ -64,11 +63,11 @@ const Matches = (props) => {
       {matches ? 
         <div className="-blue-800 m-5 w-auto py-5">
           {matches.map((match) => {
-            return <div className="mx-4  hover:m-3" key={match.id}>
+            return <div className="mx-4" key={match.id}>
 
-              <Link to={`/matchinfo/${match.id}`} >
+              {/* <Link to={`/matchinfo/${match.id}`} > */}
                 <MatchScore match={match}></MatchScore>
-              </Link>
+              {/* </Link> */}
 
             </div>
           })}
@@ -80,10 +79,8 @@ const Matches = (props) => {
 
      : <div className='m-auto'>
       {<Spinner />}
-      
       </div>}
     </>
   )
 }
-
 export default Matches

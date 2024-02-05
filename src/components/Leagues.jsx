@@ -1,20 +1,20 @@
-import React, { useContext, useEffect } from 'react';
-import climg from './cl.avif';
-import bundesliga from './bundesliga.avif';
-import PL from './premierleague.avif';
-import ligue1 from './ligue1.avif';
-import primeradivision from './primeradivision.avif';
-import seriea from './seriea.avif';
-import eredivise from './eredivise.avif';
-import ligaportugal from './ligaportugal.avif';
-import conbemol from './conbemol.avif';
+import React from 'react';
+import climg from '/cl.avif';
+import bundesliga from '/bundesliga.avif';
+import PL from '/premierleague.avif';
+import ligue1 from '/ligue1.avif';
+import primeradivision from '/primeradivision.avif';
+import seriea from '/seriea.avif';
+import eredivise from '/eredivise.avif';
+import ligaportugal from '/ligaportugal.avif';
+import conbemol from '/conbemol.avif';
 import { Link } from "react-router-dom";
 
 const Leagues = () => {
   return (
     <>
       {/*hover:borders ... min-h-screen  */}
-      <div className="flex-col  mt-10  bg-dark-400 h-screen top-0 min-h-screen">
+      <div className="flex-col mt-16 md:mt-20 lg:mt-24 bg-dark-400 h-screen top-0 min-h-screen">
         <div className='h-22 bg-blue-400 rounded-lg mb-2 mx-2 border-2 border-black hover:border-4'>
           <Link to="/CL/matches" className='flex'>
             <img className="mx-auto md:mx-auto h-10 sm:h-12 md:h-14 lg:ml-0 lg:my-2 xl:h-20 xl:ml-2 league-image" src={climg} alt="champions league logo" />
@@ -28,7 +28,7 @@ const Leagues = () => {
 
         <div className='h-22 bg-blue-400 rounded-lg m-2 border-2 border-black hover:border-4'>
           <Link to="/BL1/matches" className='flex xl:my-auto'>
-            <img className="mx-auto md:mx-auto h-10 sm:h-12 md:h-14 lg:ml-0 lg:my-2 xl:h-20 xl:ml-2 league-image " src={bundesliga} alt="bundesliga logo" />
+            <img className="mx-auto md:mx-auto h-10 sm:h-12 md:h-14 lg:ml-0 lg:my-2 xl:h-20 xl:ml-2 league-image " src="/bundesliga.avif" alt="bundesliga logo" />
             <div className="my-auto mr-auto hidden lg:block">
               <h1 className="m-auto text-2xl">
                 BUNDESLIGA

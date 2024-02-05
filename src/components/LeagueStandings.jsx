@@ -4,7 +4,6 @@ import axios from 'axios';
 
 const LeagueStandings = (props) => {
   let { league, leaguelogo } = props;
-  let location = useLocation();
   const params = useParams();
   const { id } = params;
   const apiKey = import.meta.env.VITE_API_KEY;
@@ -40,7 +39,7 @@ const LeagueStandings = (props) => {
 
   return (
     <>
-      <div className='mx-2 rounded-lg p-3 flex flex-col'>
+      <div className='mx-2 rounded-lg p-3 flex flex-col text-sm md:text-lg lg:text-xl'>
         <div className='flex justify-end'>
           <h2 className="mx-2 text-white font-semibold">PLD</h2>
           <h2 className="mx-2 text-white font-semibold">W</h2>
@@ -53,20 +52,19 @@ const LeagueStandings = (props) => {
 
           {teams && teams.map((element) => {
             return <div className="flex flex-row justify-between my-2 bg-slate-500 opacity-75 rounded-lg lg:h-24 items-center" key={element.team.id}>
-              <Link to={`/match/${element.team.id}`}>
+              <Link to={`/team/matches/${element.team.id}`}>
 
                 <div className='flex my-4 mx-2'>
                   <h2 className='grid place-content-center font-semisbold lg:text-2xl'> {element.position}</h2>
                   <img className="h-8 md:12 mx-2 grid place-content-center md:h-10 lg:h-14" src={element.team.crest} alt={`${element.team.shortName} logo`} />
                   <div className='grid place-content-center'>
-
-                    <h2 className='hidden sm:block font-bold text-sm md:text-md lg:text-3xl'>{element.team.name}</h2>
+                    <h2 className='hidden sm:block font-bold text-sm md:text-md lg:text-2xl'>{element.team.name}</h2>
                     <h2 className='block sm:hidden font-bold'>{element.team.shortName}</h2>
                   </div>
                 </div>
               </Link>
 
-              <div className='flex flex-row justify-around mr-2 font-bold lg:text-lg'>
+              <div className='flex flex-row justify-around mr-2 font-bold lg:text-xl text-white'>
 
                 <h2 className="mr-3 md:mr-2 lg:mr-4 xl:mr-4 grid place-content-center">
                   {element.playedGames}

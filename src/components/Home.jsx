@@ -39,10 +39,8 @@ const Home = (props) => {
 
   let element;
   if (location.pathname === `/${league}/table/${leagueID}`) {
-    // console.log(location)
     element = <LeagueStandings league={league} leaguelogo={leaguelogo} key={league} />
   } else {
-    // console.log(location)
     element = <Matches league={league} leaguelogo={leaguelogo} key={league} />
   }
 
@@ -57,13 +55,13 @@ const Home = (props) => {
 
           <div className='h-22 px-12 py-4 rounded-lg mb-2 mx-2 flex flex-col sm:flex-row text-white'>
             <div className='grid place-content-center'>
-              <img className="grid place-content-center h-16 sm:h-28 md:h-36" src={leaguelogo} alt={`${league} logo`} />
+              <img className="grid place-content-center h-16 sm:h-28 md:h-36 lg:h-48" src={leaguelogo} alt={`${league} logo`} />
             </div>
             <div className="my-auto  grid place-content-center  ">
-              <h1 className="my-auto ml-0 sm:ml-2 text-2xl sm:text-3xl md:text-5xl">
+              <h1 className="my-auto ml-0 sm:ml-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl">
                 {currentLeague}
               </h1>
-              <h2 className='grid place-content-center'>
+              <h2 className='grid place-content-center font-semi-bold text-sm md:text-base lg:text-xl my-2'>
                 {season.start}/{season.end}
               </h2>
             </div>
@@ -76,11 +74,9 @@ const Home = (props) => {
               <li className="mr-1">
                 <Link className={`inline-block md:text-lg lg:text-xl py-2 px-4 font-bold ${location.pathname === `/${league}/table/${leagueID}` ? 'border-b-4 pointer-events-none' : ''}`} to={`/${league}/table/${leagueID}`} disabled>Table</Link>
               </li>
-
             </ul>
 
           </div>
-
           <div className="element">
             {element}
           </div>

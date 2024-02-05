@@ -4,7 +4,6 @@ import LoadingBar from 'react-top-loading-bar'
 import axios from "axios"
 
 const MatchInfo = () => {
-
     const params = useParams();
     const { id } = params;
     const [progress, setProgress] = useState(0);
